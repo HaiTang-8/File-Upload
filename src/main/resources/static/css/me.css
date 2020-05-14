@@ -1,0 +1,8 @@
+.m-padded-tb-massive {
+    padding-top: 5em !important;
+    padding-bottom: 5em !important;
+}
+.m-container-small {
+    max-width: 60em !important;
+    margin: auto !important;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户文件列表页面</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+</head>
+<body>
+<h2>欢迎：<span th:text="${session.user.userName}"></span></h2>
+<table class="ui celled table">
+    <thead>
+        <tr>
+            <th colspan="11">文件列表</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>ID</td>
+            <td>文件原始名称</td>
+            <td>文件新的名称</td>
+            <td>文件后缀</td>
+            <td>储存路径</td>
+            <td>文件大小</td>
+            <td>类型</td>
+            <td>是否图片</td>
+            <td>下载次数</td>
+            <td>上传时间</td>
+            <td>操作</td>
+        </tr>
+        <tr th:each="file : ${files}">
+            <td th:text="${file.id}">1</td>
+            <td th:text="${file.oldFileName}">aa.txt</td>
+            <td th:text="${file.newFileName}">uuid.txt</td>
+            <td th:text="${file.ext}">.txt</td>
+            <td th:text="${file.path}">/files</td>
+            <td th:text="${file.size}">1024</td>
+            <td th:text="${file.type}">text/plain</td>
+            <td th:text="${file.isImg}" th:classappend="${file.getIsImg()=='是'}?'':'negative'">否</td>
+            <td th:text="${file.downCounts}">11</td>
+            <td th:text="${#dates.format(file.uploadTime,'yyyy-MM-dd-HH:mm:ss')}">2020-12-12</td>
+            <td>
+                <a th:href="@{/file/download(id=${file.id})}" href="">下载</a>
+                <a target="_blank" th:href="@{/file/download(id=${file.id},openStyle='inline')}" href="">在线打开</a>
+                <a th:href="@{/file/delete(id=${file.id})}" href="">删除</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+<h3>上传文件</h3>
+<form method="post" enctype="multipart/form-data" th:action="@{/file/upload}">
+    <input type="file" name="aaa"> <input type="submit" value="上传文件">
+</form>
+
+<div class="ui small compact negative message" th:unless="${#strings.isEmpty(errorMessage)}" th:text="${errorMessage}"></div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+</body>
+</html>

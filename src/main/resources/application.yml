@@ -1,0 +1,26 @@
+server:
+  port: 8081
+
+spring:
+  thymeleaf:
+    cache: false
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/files?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 1234
+
+  #设置上传文件的大小
+  # max-file-size=10Mb是设置单个文件的大小, max-request-size=100Mb是设置单次请求的文件的总大小
+  #如果是想要不限制文件上传的大小，那么就把两个值都设置为-1就行啦
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
