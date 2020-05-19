@@ -35,7 +35,9 @@ CREATE TABLE `t_files` (
   PRIMARY KEY (`id`),
   KEY `userId` (`userId`),
   CONSTRAINT `t_files_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `t_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_files` */
 
 /*Table structure for table `t_user` */
 
@@ -47,6 +49,10 @@ CREATE TABLE `t_user` (
   `password` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_user` */
+
+insert  into `t_user`(`id`,`username`,`password`) values (1,'zhangsan','e10adc3949ba59abbe56e057f20f883e');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
