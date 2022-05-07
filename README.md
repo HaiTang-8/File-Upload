@@ -4,7 +4,7 @@
 ## 项目环境
 
 SpringBoot 2.2.5
-JDK 11
+JDK 8
 MySQL 5.7.29
 
 ## 技术栈
